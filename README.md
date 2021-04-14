@@ -4,21 +4,28 @@
 
 - [Reading List for Stream Processing](#reading-list-for-stream-processing)
   - [Table of Contents](#table-of-contents)
+  - [Courses](#courses)
   - [Books](#books)
   - [Surveys](#surveys)
-  - [Stream Processing Systems](#stream-processing-systems)
-  - [Stream Join](#stream-join)
+  - [Stream Processing Engines](#stream-processing-engines)
+  - [Micro-batch](#micro-batch)
   - [Elasticity](#elasticity)
     - [Queuing Theory](#queuing-theory)
-    - [State Migration](#state-migration)
-  - [BSP](#bsp)
-  - [Autoscaling](#autoscaling)
-  - [State Management](#state-management)
-    - [Storage](#storage)
+    - [State Management](#state-management)
+  - [Sketches](#sketches)
+  - [Stream Join](#stream-join)
   - [Hardware](#hardware)
   - [Benchmarking](#benchmarking)
-  - [Cluster Resource Management](#cluster-resource-management)
   - [Misc](#misc)
+  - [Related Topics](#related-topics)
+    - [Batch Processing](#batch-processing)
+    - [Cluster Resource Management](#cluster-resource-management)
+    - [Autoscaling](#autoscaling)
+    - [Storage](#storage)
+
+## Courses
+
+- [CS 591 K1: Data Stream Processing and Analytics](https://vasia.github.io/dspa21/), Spring 2021, Brown University
 
 ## Books
 
@@ -32,7 +39,7 @@
 - [Resource Management and Scheduling in Distributed Stream Processing Systems: A Taxonomy, Review, and Future Directions](https://doi.org/10.1145/3355399), ACM Computing Surveys, 2020
 - [A Survey on the Evolution of Stream Processing Systems](https://arxiv.org/abs/2008.00842), arXiv, 2020
 
-## Stream Processing Systems
+## Stream Processing Engines
 
 - [S4: Distributed Stream Computing Platform](https://ieeexplore.ieee.org/abstract/document/5693297), ICDMW, 2010
 - [Discretized Streams: An Efficient and Fault-Tolerant Model for Stream Processing on Large Clusters](https://www.usenix.org/conference/hotcloud12/workshop-program/presentation/zaharia), HotCloud, 2012
@@ -48,17 +55,19 @@
 - [Structured Streaming: A Declarative API for Real-Time Applications in Apache Spark](https://doi.org/10.1145/3183713.3190664), SIGMOD, 2018
 - [A Cloud Native Platform for Stateful Streaming](https://arxiv.org/abs/2006.00064), arXiv, 2020.
 
-## Stream Join
+## Micro-batch
 
-- [Providing streaming joins as a service at Facebook](https://doi.org/10.14778/3229863.3229869), VLDB, 2018
-- [AJoin: ad-hoc stream joins at scale](https://doi.org/10.14778/3372716.3372718), VLDB, 2019
+- [Drizzle: Fast and Adaptable Stream Processing at Scale](https://doi.org/10.1145/3132747.3132750), SOSP, 2017
+- [Prompt: Dynamic Data-Partitioning for Distributed Micro-batch Stream Processing Systems](https://doi.org/10.1145/3318464.3389713), SIGMOD, 2020
 
 ## Elasticity
 
 - [Stela: Enabling Stream Processing Systems to Scale-in and Scale-out On-demand](https://ieeexplore.ieee.org/abstract/document/7484160), IC2E, 2016
+- [Three steps is all you need: fast, accurate, automatic scaling decisions for distributed streaming dataflows](https://www.usenix.org/conference/osdi18/presentation/kalavri) (DS2), OSDI, 2018
 - [Minimizing cost by reducing scaling operations in distributed stream processing](https://doi.org/10.14778/3317315.3317316), VLDB, 2019
 - [Elasticutor: Rapid Elasticity for Realtime Stateful Stream Processing](https://doi.org/10.1145/3299869.3319868), SIGMOD, 2019
 - [Turbine: Facebook’s Service Management Platform for Stream Processing](https://doi.org/10.14778/3137765.3137777), ICDE, 2020
+- [Auto-sizing for Stream Processing Applications at LinkedIn](https://www.usenix.org/conference/hotcloud20/presentation/singh) (Sage), HotStorage, 2020
 - [Move Fast and Meet Deadlines: Fine-grained Real-time Stream Processing with Cameo](https://www.usenix.org/conference/nsdi21/presentation/xu), NSDI, 2021
 
 ### Queuing Theory
@@ -66,29 +75,20 @@
 - [Elastic Stream Processing with Latency Guarantees](https://ieeexplore.ieee.org/document/7164926) (Nephele), ICDCS, 2015
 - [DRS: Auto-Scaling for Real-Time Stream Analytics](https://ieeexplore.ieee.org/document/8024162), IEEE/ACM TON, 2017
 
-### State Migration
+### State Management
 
+- [Integrating scale out and fault tolerance in stream processing using operator state management](https://doi.org/10.1145/2463676.2465282) (SEEP), SIGMOD, 2013
 - [Megaphone: latency-conscious state migration for distributed streaming dataflows](https://doi.org/10.14778/3329772.3329777), VLDB, 2019
-
-## BSP
-
-- [Drizzle: Fast and Adaptable Stream Processing at Scale](https://doi.org/10.1145/3132747.3132750), SOSP, 2017
-- [Riffle: optimized shuffle service for large-scale data analytics](https://doi.org/10.1145/3190508.3190534), EuroSys, 2018
-- [Prompt: Dynamic Data-Partitioning for Distributed Micro-batch Stream Processing Systems](https://doi.org/10.1145/3318464.3389713), SIGMOD, 2020
-
-## Autoscaling
-
-- [Three steps is all you need: fast, accurate, automatic scaling decisions for distributed streaming dataflows](https://www.usenix.org/conference/osdi18/presentation/kalavri) (DS2), OSDI, 2018
-- [Autopilot: workload autoscaling at Google](https://doi.org/10.1145/3342195.3387524), EuroSys, 2020
-- [Auto-sizing for Stream Processing Applications at LinkedIn](https://www.usenix.org/conference/hotcloud20/presentation/singh) (Sage), HotStorage, 2020
-
-## State Management
-
-### Storage
-
-- [Optimizing space amplification in RocksDB](https://research.fb.com/publications/optimizing-space-amplification-in-rocksdb/), CIDR, 2017
-- [FASTER: A Concurrent Key-Value Store with In-Place Updates](https://doi.org/10.1145/3183713.3196898), SIGMOD, 2018
 - [In support of workload-aware streaming state management](https://www.usenix.org/conference/hotstorage20/presentation/kalavri), HotStorage, 2020
+
+## Sketches
+
+- [Cold Filter: A Meta-Framework for Faster and More Accurate Stream Processing](https://doi.org/10.1145/3183713.3183726), SIGMOD, 2018
+
+## Stream Join
+
+- [Providing streaming joins as a service at Facebook](https://doi.org/10.14778/3229863.3229869), VLDB, 2018
+- [AJoin: ad-hoc stream joins at scale](https://doi.org/10.14778/3372716.3372718), VLDB, 2019
 
 ## Hardware
 
@@ -97,10 +97,23 @@
 ## Benchmarking
 
 - [Nexmark benchmark suite](https://beam.apache.org/documentation/sdks/java/testing/nexmark/)
+  - [nexmark/nexmark: Benchmarks for queries over continuous data streams.](https://github.com/nexmark/nexmark)
 - [Benchmarking cloud serving systems with YCSB](https://doi.org/10.1145/1807128.1807152), SoCC, 2010
 - [Benchmarking Distributed Stream Data Processing Systems](https://ieeexplore.ieee.org/abstract/document/8509390), ICDE, 2018
 
-## Cluster Resource Management
+## Misc
+
+- [TerseCades: Efficient Data Compression in Stream Processing](https://www.usenix.org/conference/atc18/presentation/pekhimenko), USENIX ATC, 2018 (compression)
+
+---
+
+## Related Topics
+
+### Batch Processing
+
+- [Riffle: optimized shuffle service for large-scale data analytics](https://doi.org/10.1145/3190508.3190534), EuroSys, 2018
+
+### Cluster Resource Management
 
 - [Mesos: A Platform for Fine-Grained Resource Sharing in the Data Center](https://www.usenix.org/conference/nsdi11/mesos-platform-fine-grained-resource-sharing-data-center), NSDI, 2011
 - [Omega: flexible, scalable schedulers for large compute clusters](https://doi.org/10.1145/2465351.2465386), EuroSys, 2013
@@ -108,7 +121,11 @@
 - [Large-scale cluster management at Google with Borg](https://doi.org/10.1145/2741948.2741964), EuroSys, 2015
 - [Twine: A Unified Cluster Management System for Shared Infrastructure](https://www.usenix.org/conference/osdi20/presentation/tang), OSDI, 2020
 
-## Misc
+### Autoscaling
 
-- [TerseCades: Efficient Data Compression in Stream Processing](https://www.usenix.org/conference/atc18/presentation/pekhimenko), USENIX ATC, 2018 (compression)
-- [Integrating scale out and fault tolerance in stream processing using operator state management](https://doi.org/10.1145/2463676.2465282) (SEEP), SIGMOD, 2013
+- [Autopilot: workload autoscaling at Google](https://doi.org/10.1145/3342195.3387524), EuroSys, 2020
+
+### Storage
+
+- [Optimizing space amplification in RocksDB](https://research.fb.com/publications/optimizing-space-amplification-in-rocksdb/), CIDR, 2017
+- [FASTER: A Concurrent Key-Value Store with In-Place Updates](https://doi.org/10.1145/3183713.3196898), SIGMOD, 2018
